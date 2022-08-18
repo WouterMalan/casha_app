@@ -12,6 +12,7 @@ class SimpleCalcCubit extends Cubit<SimpleCalcState> {
     if (cost == null || tender == null) return;
 
     num totalChange = tender - cost;
+    num newTotalChange = tender - cost;
     Map<String, num> breakdown = {};
 
     // TODO - Calculate your breakdown here, put the results in a map, with the validDenominations as the key, and the result as the value
@@ -19,12 +20,12 @@ class SimpleCalcCubit extends Cubit<SimpleCalcState> {
       if (totalChange >= denomination) {
         num numOfDenomination = totalChange ~/ denomination;
         breakdown[denomination.toString()] = numOfDenomination;
-
+        totalChange -= numOfDenomination * denomination;
       }
     }
 
 
-    emit(SimpleCalcCalculated(breakdown, totalChange));
+    emit(SimpleCalcCalculated(breakdown, newTotalChange));
   }
 
   void clearAll() {
