@@ -6,7 +6,7 @@ part 'simple_calc_state.dart';
 class SimpleCalcCubit extends Cubit<SimpleCalcState> {
   SimpleCalcCubit() : super(SimpleCalcCalculated({}, 0));
 
-  List<num> validDenominations = [200, 50, 20, 10, 5, 2, 1, 0.5, 0.2];
+  List<num> validDenominations = [200,100, 50, 20, 10, 5, 2, 1, 0.5, 0.2];
 
   void calculateWithMod(double? cost, double? tender) {
     if (cost == null || tender == null) return;

@@ -17,7 +17,7 @@ class SimpleCalcView extends StatelessWidget {
     BlocProvider.of<SimpleCalcCubit>(context).clearAll();
   }
 
-  //to handle errors
+//to handle errors
   void errorMessage(BuildContext context) {
     if (double.tryParse(costController.text) == null || double.tryParse(costController.text) !< 0) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -25,6 +25,7 @@ class SimpleCalcView extends StatelessWidget {
           padding:  EdgeInsets.all(5),
           backgroundColor: Colors.red,
           behavior: SnackBarBehavior.floating,
+          duration: Duration(seconds: 2),
           content: Text('Please enter a valid cost'),
         ),
       );
@@ -34,6 +35,7 @@ class SimpleCalcView extends StatelessWidget {
           padding:  EdgeInsets.all(5),
           backgroundColor: Colors.red,
           behavior: SnackBarBehavior.floating,
+          duration: Duration(seconds: 2),
           content: Text('Please enter a valid tender'),
         ),
       );
@@ -107,7 +109,7 @@ class SimpleCalcView extends StatelessWidget {
                     ),
                     Expanded(child: Container()),
                     ElevatedButton(
-                      onPressed: () => _calculateChange(context),
+                      onPressed: () => errorMessage(context),
                       child: Text('Calculate change'),
                     )
                   ],
