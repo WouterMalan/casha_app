@@ -19,7 +19,7 @@ class SimpleCalcCubit extends Cubit<SimpleCalcState> {
       if (totalChange >= denomination) {
         num numOfDenomination = totalChange ~/ denomination;
         breakdown[denomination.toString()] = numOfDenomination;
-        totalChange -= numOfDenomination * denomination;
+
       }
     }
 
