@@ -17,6 +17,32 @@ class SimpleCalcView extends StatelessWidget {
     BlocProvider.of<SimpleCalcCubit>(context).clearAll();
   }
 
+  //to handle errors
+  void errorMessage(BuildContext context) {
+    if (double.tryParse(costController.text) == null || double.tryParse(costController.text) !< 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          padding:  EdgeInsets.all(5),
+          backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+          content: Text('Please enter a valid cost'),
+        ),
+      );
+    } else if (double.tryParse(tenderController.text) == null || double.tryParse(tenderController.text)!< 0) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          padding:  EdgeInsets.all(5),
+          backgroundColor: Colors.red,
+          behavior: SnackBarBehavior.floating,
+          content: Text('Please enter a valid tender'),
+        ),
+      );
+    } else {
+      _calculateChange(context);
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
